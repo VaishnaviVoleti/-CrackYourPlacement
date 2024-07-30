@@ -1,0 +1,45 @@
+class Solution {
+public:
+    string decodeString(string s) {
+       stack<int>numst;
+       stack<char>charst;
+       string decoded;
+       
+        for(int i=0;i<s.size();i++){
+            if(isdigit(s[i])){
+                int num = 0;
+                while(isdigit(s[i])){
+                    num = num*10+(s[i]-'0');
+                    i++;
+                }
+                i--;
+                numst.push(num);}
+            else if(s[i]!=']')
+                charst.push(s[i]);
+            else if(s[i]==']'){
+                string s1 = "";
+                while (!charst.empty() && charst.top() != '[') {
+                    s1 = charst.top() + s1;
+                    charst.pop();
+                }
+                 charst.pop();
+                 int repeatTimes = numst.top();
+                numst.pop(); 
+
+                string temp = "";
+                for (int j = 0; j < repeatTimes; j++) {
+                    temp += s1;
+                }
+                for (char c : temp) {
+                    charst.push(c);
+                }
+                
+            }
+        }
+        while (!charst.empty()) {
+            decoded = charst.top() + decoded;
+            charst.pop();
+        }
+        return decoded;
+    }
+};
