@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char>st;
+        map<char,char>dict;
+        dict['(']=')';
+        dict['{']='}';
+        dict['[']=']';
+        if(s.length()%2!=0)
+            return false;
+        for(int i=0;i<s.length();i++){
+
+            if(dict.find(s[i]) != dict.end()){
+                st.push(s[i]);
+            }
+            else
+             {  if(st.empty() || dict[st.top()]!=s[i])
+                    return false;
+            st.pop(); 
+            }   
+        }
+        return st.empty();
+    }
+};
