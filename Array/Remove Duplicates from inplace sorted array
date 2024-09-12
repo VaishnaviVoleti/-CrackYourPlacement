@@ -1,0 +1,17 @@
+#include<unordered_map>
+int removeDuplicates(vector<int> &arr, int n) {
+	// Write your code here.
+	/*unordered_map<int,int>mp;
+	for(auto it:arr){
+		mp[it]++;
+	}
+	return mp.size();*/
+	int i=0;
+	for(int j=0;j<n;j++){
+		if(arr[i]!=arr[j]){
+				i++;
+				arr[i] = arr[j];
+		}
+	}
+	return i+1;
+}
