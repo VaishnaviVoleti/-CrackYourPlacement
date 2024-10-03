@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+int main() {
+    // Write C++ code here
+    int v,w,fw,tw;
+    cout<<"Enter number of vehicles and wheels\n";
+    cin>>v>>w;
+    if(v>=w || v<2 || w%2!=0){
+        cout<<"INVALID INPUT"<<endl;
+    }
+    else{
+        fw = (w-2*v)/2;
+        tw = v -fw;
+        if(fw+tw==v && (4*fw+2*tw==w)){
+            cout<<"Two wheeler = "<<tw<<"\t"<<"Four wheeler = "<<fw<<endl;
+        }
+        else{
+            cout<<"INVALID INPUT"<<endl;
+        }
+    }
+    return 0;
+}
